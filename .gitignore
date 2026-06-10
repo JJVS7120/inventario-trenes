@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+BACKUPS/
+EXCEL/
+DATOS/
+*.7z
