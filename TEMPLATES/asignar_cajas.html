@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Asignar a Caja</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div class="container py-4">
+
+    <!-- CABECERA -->
+    <div class="mb-4">
+        <h1 class="fw-bold">📦 Asignar artículo a caja</h1>
+        <p class="text-muted">
+            Artículo nº {{ numero }}
+        </p>
+    </div>
+
+    <!-- FORMULARIO -->
+    <div class="card shadow-sm">
+
+        <div class="card-header">
+            <h5 class="mb-0">📂 Selección de caja</h5>
+        </div>
+
+        <div class="card-body">
+
+            <form method="post">
+
+                <div class="mb-3">
+
+                    <label for="caja" class="form-label">
+                        Selecciona una caja
+                    </label>
+
+                    <select
+                        id="caja"
+                        name="caja"
+                        class="form-select"
+                        required>
+
+                        {% for caja in cajas %}
+                        <option value="{{ caja.CajaID }}">
+                            {{ caja.Nombre }}
+                        </option>
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+                <div class="d-flex gap-2">
+
+                    <button
+                        type="submit"
+                        class="btn btn-success">
+                        Guardar asignación
+                    </button>
+
+                    <a
+                        href="/articulo/{{ numero }}"
+                        class="btn btn-secondary">
+                        Volver
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

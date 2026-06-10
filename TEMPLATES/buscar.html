@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Buscar artículos</title>
+
+</head>
+
+<body>
+
+<h1>Buscar artículos</h1>
+
+<a href="/">
+
+    Volver
+
+</a>
+
+<hr>
+
+<form method="get">
+
+    Marca:
+
+    <select name="marca">
+
+        <option value="">
+
+            Todas
+
+        </option>
+
+        {% for m in marcas %}
+
+            <option
+                value="{{ m }}"
+                {% if m == marca %}
+                    selected
+                {% endif %}
+            >
+
+                {{ m }}
+
+            </option>
+
+        {% endfor %}
+
+    </select>
+
+    <br><br>
+
+    Descripción:
+
+    <input
+        type="text"
+        name="descripcion"
+        value="{{ descripcion }}"
+        size="40">
+
+    <br><br>
+
+    <button type="submit">
+
+        Buscar
+
+    </button>
+
+</form>
+
+<hr>
+
+<p>
+
+Resultados:
+{{ total }}
+
+</p>
+
+{% for articulo in articulos %}
+
+    <p>
+
+    <a href="/articulo/{{ articulo.numero }}">
+
+        <b>
+
+        {{ articulo.marca }}
+
+        </b>
+
+        -
+
+        {{ articulo.referencia }}
+
+    </a>
+
+    <br>
+
+    {{ articulo.descripcion }}
+
+    </p>
+
+    <hr>
+
+{% endfor %}
+
+</body>
+
+</html>

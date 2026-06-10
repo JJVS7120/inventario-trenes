@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Artículos sin imagen{% endblock %}
+
+{% block content %}
+
+<div class="mb-4">
+    <h1>🖼️ Artículos sin imagen</h1>
+
+    <div class="alert alert-warning">
+        Total sin imagen: <strong>{{ total }}</strong>
+    </div>
+</div>
+
+<div class="list-group">
+
+{% for articulo in articulos %}
+
+    <div class="list-group-item">
+
+        <div class="d-flex justify-content-between align-items-center">
+
+            <div>
+
+                <strong>
+                    {{ articulo.marca }}
+                </strong>
+
+                <br>
+
+                <span class="text-muted">
+                    {{ articulo.referencia }}
+                </span>
+
+            </div>
+
+            <div>
+
+                <a
+                    href="/articulo/{{ articulo.numero }}"
+                    class="btn btn-outline-primary btn-sm">
+
+                    Ver ficha
+
+                </a>
+
+                <a
+                    href="/subir_imagen/{{ articulo.numero }}"
+                    class="btn btn-success btn-sm">
+
+                    Subir imagen
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

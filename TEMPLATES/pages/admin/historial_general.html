@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Historial general{% endblock %}
+
+{% block content %}
+
+<div class="mb-4">
+
+    <h1>📦 Historial general</h1>
+
+    <p class="text-muted">
+        Últimos movimientos del sistema
+    </p>
+
+</div>
+
+<div class="card shadow-sm">
+
+    <div class="card-body">
+
+        {% for m in movimientos %}
+
+        <div class="border-start border-3 ps-3 mb-3">
+
+            <div class="text-muted small">
+                {{ m.fecha }}
+            </div>
+
+            <div>
+
+                {% if m.numero %}
+                    <strong>Artículo {{ m.numero }}</strong><br>
+                {% endif %}
+
+                <span>
+                    {{ m.origen }} → {{ m.destino }}
+                </span>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

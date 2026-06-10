@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Ubicación{% endblock %}
+
+{% block content %}
+
+<h1>
+    {% if index is defined %}
+        ✏️ Editar ubicación
+    {% else %}
+        ➕ Nueva ubicación
+    {% endif %}
+</h1>
+
+<form method="post">
+
+    <div class="mb-3">
+        <label class="form-label">Ubicación</label>
+        <input type="text"
+               name="ubicacion"
+               class="form-control"
+               value="{{ ubicacion['Ubicación'] if ubicacion else '' }}">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Sububicación</label>
+        <input type="text"
+               name="sububicacion"
+               class="form-control"
+               value="{{ ubicacion['Sububicación'] if ubicacion else '' }}">
+    </div>
+
+    <button class="btn btn-success">
+        Guardar
+    </button>
+
+    <a href="/ubicaciones" class="btn btn-secondary">
+        Cancelar
+    </a>
+
+</form>
+
+{% endblock %}

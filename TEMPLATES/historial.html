@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Historial</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-light">
+
+<div class="container py-4">
+
+    <!-- CABECERA -->
+    <div class="mb-4">
+        <h1 class="fw-bold">🕒 Historial de movimientos</h1>
+        <p class="text-muted">
+            Registro de cambios de ubicación
+        </p>
+    </div>
+
+    <!-- MOVIMIENTOS -->
+    <div class="card shadow-sm">
+
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">📋 Movimientos registrados</h5>
+
+            <span class="badge bg-primary">
+                {{ movimientos|length }}
+            </span>
+        </div>
+
+        <div class="card-body">
+
+            {% if movimientos %}
+
+                <div class="list-group">
+
+                    {% for movimiento in movimientos %}
+
+                    <div class="list-group-item">
+
+                        <div class="text-muted small">
+                            {{ movimiento.fecha }}
+                        </div>
+
+                        <div>
+                            <strong>{{ movimiento.origen }}</strong>
+                            →
+                            <strong>{{ movimiento.destino }}</strong>
+                        </div>
+
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <div class="alert alert-info mb-0">
+                    No existen movimientos registrados.
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    <!-- NAVEGACIÓN -->
+    <div class="mt-4">
+
+        <a
+            href="javascript:history.back()"
+            class="btn btn-secondary">
+            ← Volver
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

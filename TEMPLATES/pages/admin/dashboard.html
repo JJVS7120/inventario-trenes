@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}Administración{% endblock %}
+
+{% block content %}
+
+<div class="mb-4">
+    <h1>⚙️ Administración</h1>
+    <p class="text-muted">
+        Herramientas de mantenimiento del inventario
+    </p>
+</div>
+
+<div class="row g-3">
+
+    <div class="col-md-4">
+
+        <div class="card shadow-sm h-100">
+
+            <div class="card-body">
+
+                <h5>Imágenes</h5>
+
+                <p class="text-muted">
+                    Revisar artículos sin fotografía
+                </p>
+
+                <a
+                    href="/sin_imagen"
+                    class="btn btn-primary">
+
+                    Ver listado
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card shadow-sm h-100">
+
+            <div class="card-body">
+
+                <h5>Ubicaciones</h5>
+
+                <p class="text-muted">
+                    Revisar artículos sin ubicación
+                </p>
+
+                <a
+                    href="/sin_ubicacion"
+                    class="btn btn-warning">
+
+                    Ver listado
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card shadow-sm h-100">
+
+            <div class="card-body">
+
+                <h5>Movimiento masivo</h5>
+
+                <p class="text-muted">
+                    Mover varios artículos a la vez
+                </p>
+
+                <a
+                    href="/seleccion_masiva"
+                    class="btn btn-success">
+
+                    Abrir
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

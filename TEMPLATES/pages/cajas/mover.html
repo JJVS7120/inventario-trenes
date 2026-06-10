@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}Mover caja{% endblock %}
+
+{% block content %}
+
+<h1>Mover caja {{ caja_id }}</h1>
+
+<form method="post">
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Destino
+        </label>
+
+        <select
+            class="form-select"
+            id="destino"
+            onchange="actualizar()">
+
+            {% for opcion in opciones %}
+
+            <option value="{{ opcion.valor }}">
+                {{ opcion.texto }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+    </div>
+
+    <input
+        type="hidden"
+        name="ubicacion"
+        id="ubicacion">
+
+    <input
+        type="hidden"
+        name="sububicacion"
+        id="sububicacion">
+
+    <button
+        type="submit"
+        class="btn btn-primary">
+
+        Guardar
+
+    </button>
+
+</form>
+
+<script>
+
+function actualizar() {
+
+    let v =
+        document.getElementById(
+            "destino"
+        ).value;
+
+    let p = v.split("|");
+
+    document.getElementById(
+        "ubicacion"
+    ).value = p[0];
+
+    document.getElementById(
+        "sububicacion"
+    ).value = p[1];
+}
+
+actualizar();
+
+</script>
+
+{% endblock %}

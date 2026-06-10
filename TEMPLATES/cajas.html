@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cajas</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-light">
+
+<div class="container py-4">
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h1 class="fw-bold">📦 Cajas</h1>
+            <p class="text-muted mb-0">Gestión de almacenamiento</p>
+        </div>
+
+        <a class="btn btn-primary" href="/crear_caja">
+            ➕ Nueva caja
+        </a>
+
+    </div>
+
+    <!-- volver -->
+    <a class="btn btn-outline-secondary mb-3" href="/admin">
+        ← Volver a administración
+    </a>
+
+    <!-- GRID DE CAJAS -->
+    <div class="row g-3">
+
+        {% for caja in cajas %}
+
+        <div class="col-md-4">
+
+            <div class="card shadow-sm h-100">
+
+                <div class="card-body">
+
+                    <!-- título -->
+                    <h5 class="card-title">
+                        <a href="/caja/{{ caja.CajaID }}" class="text-decoration-none">
+                            {{ caja.Nombre }}
+                        </a>
+                    </h5>
+
+                    <!-- progreso -->
+                    <div class="mb-2">
+                        <div class="progress">
+                            <div class="progress-bar
+                                {% if caja.porcentaje < 60 %}
+                                    bg-success
+                                {% elif caja.porcentaje < 85 %}
+                                    bg-warning
+                                {% else %}
+                                    bg-danger
+                                {% endif %}
+                            "
+                            style="width: {{ caja.porcentaje }}%">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- datos -->
+                    <p class="mb-1">
+                        <strong>Ocupados:</strong>
+                        {{ caja.ocupados }}/{{ caja.Capacidad }}
+                    </p>
+
+                    <p class="mb-1">
+                        <strong>Libres:</strong> {{ caja.libres }}
+                    </p>
+
+                    <p class="mb-2">
+                        <span class="badge 
+                            {% if caja.porcentaje < 60 %}
+                                bg-success
+                            {% elif caja.porcentaje < 85 %}
+                                bg-warning text-dark
+                            {% else %}
+                                bg-danger
+                            {% endif %}
+                        ">
+                            {{ caja.porcentaje }}% ocupada
+                        </span>
+                    </p>
+
+                    <!-- aviso -->
+                    {% if caja.aviso %}
+                        <div class="alert alert-warning py-1 px-2 small">
+                            {{ caja.aviso }}
+                        </div>
+                    {% endif %}
+
+                    <!-- acciones -->
+                    <div class="d-flex gap-2">
+
+                        <a class="btn btn-sm btn-outline-primary"
+                           href="/editar_caja/{{ caja.CajaID }}">
+                            Editar
+                        </a>
+
+                        <a class="btn btn-sm btn-outline-danger"
+                           onclick="return confirm('¿Eliminar caja?')"
+                           href="/eliminar_caja/{{ caja.CajaID }}">
+                            🗑
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

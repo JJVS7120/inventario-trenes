@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Historial{% endblock %}
+
+{% block content %}
+
+<h1>Historial del artículo {{ numero }}</h1>
+
+<a href="javascript:history.back()" class="btn btn-secondary btn-sm mb-3">
+    Volver
+</a>
+
+<div class="list-group">
+
+    {% for m in movimientos %}
+
+    <div class="list-group-item">
+
+        <div class="text-muted small">
+            {{ m.fecha }}
+        </div>
+
+        <div>
+            <strong>{{ m.origen }}</strong>
+            →
+            <strong>{{ m.destino }}</strong>
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

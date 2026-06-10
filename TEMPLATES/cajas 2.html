@@ -1,0 +1,48 @@
+<h1>Cajas</h1>
+
+<a href="/admin">Volver</a>
+
+<hr>
+
+<p>
+  <a href="/crear_caja">➕ Nueva caja</a>
+</p>
+
+<hr>
+
+{% for caja in cajas %}
+
+  <p>
+    <a href="/caja/{{ caja.CajaID }}">
+      <b>{{ caja.Nombre }}</b>
+    </a>
+
+    <br>
+
+    Ocupados: {{ caja.ocupados }}/{{ caja.Capacidad }}
+
+    <br><br>
+
+    {{ caja.porcentaje }}% ocupada
+
+    <br><br>
+
+    {{ caja.aviso }}
+
+    <br>
+
+    Libres: {{ caja.libres }}
+
+    <br><br>
+
+    <a href="/editar_caja/{{ caja.CajaID }}">Editar</a>
+
+    <a onclick="return confirm('¿Eliminar caja?')"
+       href="/eliminar_caja/{{ caja.CajaID }}">
+       🗑 Eliminar
+    </a>
+  </p>
+
+  <hr>
+
+{% endfor %}

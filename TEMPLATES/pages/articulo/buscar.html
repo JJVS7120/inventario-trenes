@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Buscar artículos{% endblock %}
+
+{% block content %}
+
+<h1>Buscar artículos</h1>
+
+<form method="get" class="mb-3">
+
+    <div class="row g-2">
+
+        <div class="col-md-4">
+            <input class="form-control"
+                   type="text"
+                   name="marca"
+                   placeholder="Marca"
+                   value="{{ marca }}">
+        </div>
+
+        <div class="col-md-4">
+            <input class="form-control"
+                   type="text"
+                   name="descripcion"
+                   placeholder="Descripción"
+                   value="{{ descripcion }}">
+        </div>
+
+        <div class="col-md-2">
+            <button class="btn btn-primary w-100">
+                Buscar
+            </button>
+        </div>
+
+    </div>
+
+</form>
+
+<p class="text-muted">
+    Total: {{ total }}
+</p>
+
+<hr>
+
+<div class="list-group">
+
+    {% for a in articulos %}
+
+    <a class="list-group-item list-group-item-action"
+       href="/articulo/{{ a.numero }}">
+
+        <strong>{{ a.marca }}</strong>
+        - {{ a.referencia }}
+
+        <br>
+
+        <small class="text-muted">
+            {{ a.descripcion }}
+        </small>
+
+    </a>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

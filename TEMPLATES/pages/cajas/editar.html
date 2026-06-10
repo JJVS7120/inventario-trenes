@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}Editar caja{% endblock %}
+
+{% block content %}
+
+<div class="mb-4">
+    <h1>✏️ Editar caja</h1>
+    <p class="text-muted">
+        {{ caja.Nombre }}
+    </p>
+</div>
+
+<form method="post">
+
+    <div class="card shadow-sm">
+
+        <div class="card-body">
+
+            <div class="mb-3">
+                <label class="form-label">
+                    Nombre
+                </label>
+
+                <input
+                    type="text"
+                    name="nombre"
+                    value="{{ caja.Nombre }}"
+                    class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">
+                    Tipo
+                </label>
+
+                <input
+                    type="text"
+                    name="tipo"
+                    value="{{ caja.Tipo }}"
+                    class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">
+                    Capacidad
+                </label>
+
+                <input
+                    type="number"
+                    name="capacidad"
+                    value="{{ caja.Capacidad }}"
+                    class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">
+                    Ubicación
+                </label>
+
+                <input
+                    type="text"
+                    name="ubicacion"
+                    value="{{ caja['Ubicación'] }}"
+                    class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">
+                    Sububicación
+                </label>
+
+                <input
+                    type="text"
+                    name="sububicacion"
+                    value="{{ caja['Sububicación'] }}"
+                    class="form-control">
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="mt-3">
+
+        <button
+            type="submit"
+            class="btn btn-primary">
+
+            Guardar cambios
+
+        </button>
+
+        <a
+            href="/caja/{{ caja.CajaID }}"
+            class="btn btn-secondary">
+
+            Cancelar
+
+        </a>
+
+    </div>
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Colección de Trenes</title>
+
+</head>
+
+<body>
+
+<h1>Colección de Trenes</h1>
+
+<hr>
+
+<h2>Resumen</h2>
+
+<p>
+Total artículos:
+{{ stats.total }}
+</p>
+
+<p>
+Con imagen:
+{{ stats.con_imagen }}
+</p>
+
+<p>
+Sin imagen:
+{{ stats.sin_imagen }}
+</p>
+
+<hr>
+
+<h2>Ubicaciones</h2>
+
+{% for nombre, cantidad in ubicaciones.items() %}
+
+<p>
+
+{{ nombre }}
+
+: {{ cantidad }}
+
+</p>
+
+{% endfor %}
+
+<hr>
+
+<h2>Últimos movimientos</h2>
+
+{% for mov in movimientos %}
+
+<p>
+
+{{ mov.Fecha }}
+
+<br>
+
+{{ mov.Origen }}
+
+→
+
+{{ mov.Destino }}
+
+</p>
+
+<hr>
+
+{% endfor %}
+
+<p>
+
+<a href="/buscar">
+
+Buscar artículos
+
+</a>
+
+</p>
+
+<p>
+
+<a href="/buscar_caja">
+
+Buscar en cajas
+
+</a>
+
+</p>
+
+<p>
+
+<a href="/admin">
+
+Administración
+
+</a>
+
+</p>
+
+<p>
+
+<a href="/cajas">
+
+Gestión de cajas
+
+</a>
+
+</p>
+
+<p>
+
+<a href="/ubicaciones">
+
+Ubicaciones
+
+</a>
+
+</p>
+
+</body>
+
+</html>

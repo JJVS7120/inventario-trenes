@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cambiar ubicación</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div class="container py-4">
+
+    <!-- CABECERA -->
+    <div class="mb-4">
+        <h1 class="fw-bold">📍 Cambiar ubicación</h1>
+        <p class="text-muted">
+            Selecciona la nueva ubicación del elemento
+        </p>
+    </div>
+
+    <!-- FORMULARIO -->
+    <div class="card shadow-sm">
+
+        <div class="card-header">
+            <h5 class="mb-0">📦 Destino</h5>
+        </div>
+
+        <div class="card-body">
+
+            <form method="post">
+
+                <div class="mb-3">
+
+                    <label for="ubicacion_sub" class="form-label">
+                        Ubicación y sububicación
+                    </label>
+
+                    <select
+                        name="ubicacion_sub"
+                        id="ubicacion_sub"
+                        class="form-select"
+                        onchange="actualizar()">
+
+                        {% for opcion in opciones %}
+                        <option value="{{ opcion.valor }}">
+                            {{ opcion.texto }}
+                        </option>
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+                <div
+                    id="preview"
+                    class="alert alert-info">
+                </div>
+
+                <input
+                    type="hidden"
+                    name="ubicacion"
+                    id="ubicacion">
+
+                <input
+                    type="hidden"
+                    name="sububicacion"
+                    id="sububicacion">
+
+                <div class="d-flex gap-2">
+
+                    <button
+                        type="submit"
+                        class="btn btn-success">
+                        💾 Guardar
+                    </button>
+
+                    <a
+                        href="javascript:history.back()"
+                        class="btn btn-secondary">
+                        ← Cancelar
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function actualizar() {
+
+    let valor =
+        document.getElementById(
+            "ubicacion_sub"
+        ).value;
+
+    let partes =
+        valor.split("|");
+
+    document.getElementById(
+        "ubicacion"
+    ).value = partes[0];
+
+    document.getElementById(
+        "sububicacion"
+    ).value = partes[1];
+
+    document.getElementById(
+        "preview"
+    ).innerHTML =
+        "Destino: <strong>" +
+        partes[0] +
+        "</strong> → <strong>" +
+        partes[1] +
+        "</strong>";
+}
+
+actualizar();
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Artículos sin ubicación{% endblock %}
+
+{% block content %}
+
+<div class="mb-4">
+
+    <h1>📍 Artículos sin ubicación</h1>
+
+    <div class="alert alert-danger">
+        Hay <strong>{{ total }}</strong> artículos pendientes de ubicación.
+    </div>
+
+</div>
+
+<div class="list-group">
+
+{% for articulo in articulos %}
+
+    <div class="list-group-item">
+
+        <div class="d-flex justify-content-between align-items-center">
+
+            <div>
+
+                <strong>
+                    {{ articulo.marca }}
+                </strong>
+
+                <br>
+
+                <span class="text-muted">
+                    {{ articulo.referencia }}
+                </span>
+
+            </div>
+
+            <div class="d-flex gap-2">
+
+                <a
+                    href="/articulo/{{ articulo.numero }}"
+                    class="btn btn-outline-primary btn-sm">
+
+                    Ver ficha
+
+                </a>
+
+                <a
+                    href="/cambiar_ubicacion/{{ articulo.numero }}"
+                    class="btn btn-success btn-sm">
+
+                    Ubicar
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

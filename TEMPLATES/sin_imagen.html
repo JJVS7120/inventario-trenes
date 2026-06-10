@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Artículos sin imagen</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-light">
+
+<div class="container py-4">
+
+    <!-- CABECERA -->
+    <div class="mb-4">
+        <h1 class="fw-bold">🖼️ Artículos sin imagen</h1>
+        <p class="text-muted">
+            Elementos pendientes de imagen
+        </p>
+    </div>
+
+    <!-- RESUMEN -->
+    <div class="row mb-4">
+
+        <div class="col-md-4">
+            <div class="card shadow-sm border-danger">
+                <div class="card-body">
+                    <h6 class="text-danger">Total sin imagen</h6>
+                    <h2>{{ total }}</h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- LISTADO -->
+    <div class="card shadow-sm">
+
+        <div class="card-header">
+            <h5 class="mb-0">📋 Lista de artículos</h5>
+        </div>
+
+        <div class="card-body">
+
+            {% if articulos %}
+
+                <div class="list-group">
+
+                    {% for articulo in articulos %}
+
+                    <div class="list-group-item">
+
+                        <div class="d-flex justify-content-between align-items-start">
+
+                            <div>
+
+                                <div class="fw-bold">
+                                    {{ articulo.marca }}
+                                </div>
+
+                                <div class="text-muted">
+                                    {{ articulo.referencia }}
+                                </div>
+
+                                <a
+                                    href="/articulo/{{ articulo.numero }}"
+                                    class="small">
+                                    Ver ficha
+                                </a>
+
+                            </div>
+
+                            <a
+                                href="/subir_imagen/{{ articulo.numero }}"
+                                class="btn btn-sm btn-primary">
+                                Subir imagen
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <div class="alert alert-success mb-0">
+                    Todos los artículos tienen imagen 🎉
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    <!-- NAVEGACIÓN -->
+    <div class="mt-4">
+
+        <a href="/" class="btn btn-secondary">
+            ← Inicio
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

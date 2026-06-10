@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}Cajas{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1>📦 Cajas</h1>
+        <p class="text-muted mb-0">
+            Gestión de cajas del inventario
+        </p>
+    </div>
+
+    <a href="/crear_caja" class="btn btn-primary">
+        Nueva caja
+    </a>
+</div>
+
+<div class="row g-3">
+
+{% for caja in cajas %}
+
+    <div class="col-md-4">
+
+        <div class="card shadow-sm h-100">
+
+            <div class="card-body">
+
+                <h5>
+                    {{ caja.Nombre }}
+                </h5>
+
+                <p class="text-muted">
+                    {{ caja.Tipo }}
+                </p>
+
+                <p>
+                    {{ caja.aviso }}
+                </p>
+
+                <p>
+                    Ocupados:
+                    <strong>{{ caja.ocupados }}</strong>
+                </p>
+
+                <p>
+                    Libres:
+                    <strong>{{ caja.libres }}</strong>
+                </p>
+
+                <div class="progress mb-3">
+
+                    <div
+                        class="progress-bar"
+                        style="width: {{ caja.porcentaje }}%">
+                        {{ caja.porcentaje }}%
+                    </div>
+
+                </div>
+
+                <a
+                    href="/caja/{{ caja.CajaID }}"
+                    class="btn btn-outline-primary">
+
+                    Ver caja
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

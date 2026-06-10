@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}Ubicación{% endblock %}
+
+{% block content %}
+
+<h1 class="mb-3">📍 {{ ubicacion }}</h1>
+
+<!-- KPIs -->
+<div class="row mb-4">
+
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h6>Total artículos</h6>
+                <h2>{{ total_articulos }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h6>Artículos sueltos</h6>
+                <h2>{{ total_sueltos }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h6>Cajas</h6>
+                <h2>{{ total_cajas }}</h2>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- SUBUBICACIONES -->
+<div class="card shadow-sm">
+
+    <div class="card-header">
+        <h5>📦 Sububicaciones</h5>
+    </div>
+
+    <div class="card-body">
+
+        <div class="row">
+
+            {% for s in resumen %}
+
+            <div class="col-md-4 mb-3">
+
+                <div class="card shadow-sm border-3
+                    {% if s.nivel == 'rojo' %}border-danger
+                    {% elif s.nivel == 'amarillo' %}border-warning
+                    {% else %}border-success{% endif %}">
+
+                    <div class="card-body">
+
+                        <h5>{{ s.sub }}</h5>
+
+                        <p>📦 {{ s.total }} artículos</p>
+                        <p>📭 {{ s.sueltos }} sueltos</p>
+                        <p>📦 {{ s.cajas }} cajas</p>
+
+                        <a class="btn btn-sm btn-primary"
+                           href="/ver_sububicacion/{{ ubicacion }}/{{ s.sub }}">
+                            Abrir
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

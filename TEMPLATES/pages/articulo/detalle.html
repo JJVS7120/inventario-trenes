@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Artículo{% endblock %}
+
+{% block content %}
+
+<a href="/">← Volver</a>
+
+<h1>{{ fila["Marca"] }}</h1>
+
+<img src="/imagen/{{ imagen }}" width="400">
+
+<hr>
+
+<p><b>Número:</b> {{ fila["Número"] }}</p>
+<p><b>Referencia:</b> {{ fila["Referencia"] }}</p>
+<p><b>Descripción:</b> {{ fila["Descripción"] }}</p>
+<p><b>Administración:</b> {{ fila["Administración"] }}</p>
+<p><b>Librea:</b> {{ fila["Librea"] }}</p>
+<p><b>Estado:</b> {{ fila["Estado"] }}</p>
+
+<hr>
+
+<p><b>Ubicación actual:</b> {{ ubicacion }}</p>
+<p><b>Sububicación:</b> {{ sububicacion }}</p>
+<p><b>Caja:</b> {{ caja }}</p>
+
+<p>
+<b>Ubicación física:</b>
+{{ ubicacion_caja }} > {{ sububicacion_caja }}
+</p>
+
+{% if caja_id %}
+<p>
+    <a href="/caja/{{ caja_id }}">Ver caja</a>
+</p>
+{% endif %}
+
+<hr>
+
+<p>
+<a href="/cambiar_ubicacion/{{ numero }}">Cambiar ubicación</a><br><br>
+<a href="/asignar_caja/{{ numero }}">Asignar a caja</a><br><br>
+<a href="/quitar_caja/{{ numero }}">Sacar de la caja</a><br><br>
+<a href="/historial/{{ numero }}">Ver historial</a><br><br>
+<a href="/subir_imagen/{{ numero }}">Subir imagen</a>
+</p>
+
+{% endblock %}

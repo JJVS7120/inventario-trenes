@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}Movimiento masivo{% endblock %}
+
+{% block content %}
+
+<div class="mb-4">
+
+    <h1>📦 Movimiento masivo</h1>
+
+    <div class="alert alert-info">
+        Selecciona los artículos que quieres mover
+    </div>
+
+</div>
+
+<form method="post" action="/mover_masivo">
+
+    <div class="card shadow-sm">
+
+        <div class="card-body">
+
+            {% for art in articulos %}
+
+            <div class="form-check mb-2">
+
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="articulos"
+                    value="{{ art.numero }}"
+                    id="art{{ art.numero }}">
+
+                <label
+                    class="form-check-label"
+                    for="art{{ art.numero }}">
+
+                    {{ art.marca }} - {{ art.referencia }}
+
+                </label>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    <div class="mt-3">
+
+        <button
+            type="submit"
+            class="btn btn-primary">
+
+            Continuar
+
+        </button>
+
+        <a
+            href="/admin"
+            class="btn btn-secondary">
+
+            Cancelar
+
+        </a>
+
+    </div>
+
+</form>
+
+{% endblock %}

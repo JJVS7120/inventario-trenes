@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Caja{% endblock %}
+
+{% block content %}
+
+<h1>{{ caja.Nombre }}</h1>
+
+<p>
+<b>Ubicación:</b> {{ ubicacion }} > {{ sububicacion }}
+</p>
+
+<p>Tipo: {{ caja.Tipo }}</p>
+<p>Capacidad: {{ caja.Capacidad }}</p>
+
+<hr>
+
+<div class="row">
+
+    <div class="col-md-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5>Ocupados</h5>
+                <h2>{{ ocupados }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5>Libres</h5>
+                <h2>{{ libres }}</h2>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<hr>
+
+<h2>Contenido</h2>
+
+<a class="btn btn-primary mb-3"
+   href="/mover_caja/{{ caja.CajaID }}">
+    Mover caja
+</a>
+
+<div class="list-group">
+
+    {% for art in articulos %}
+
+    <a class="list-group-item list-group-item-action"
+       href="/articulo/{{ art.Numero }}">
+
+        <strong>{{ art.Marca }}</strong>
+        - {{ art.Referencia }}
+
+    </a>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

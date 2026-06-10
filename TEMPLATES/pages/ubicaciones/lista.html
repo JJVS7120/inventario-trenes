@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Ubicaciones{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between mb-3">
+
+    <h1>📍 Ubicaciones</h1>
+
+    <a href="/ubicaciones/nueva" class="btn btn-primary">
+        + Nueva
+    </a>
+
+</div>
+
+<div class="card shadow-sm">
+
+    <div class="card-body">
+
+        {% for u in ubicaciones %}
+
+        <div class="d-flex justify-content-between border-bottom py-2">
+
+            <div>
+                <a href="/ubicacion/{{ u['Ubicación'] }}">
+                    <strong>{{ u['Ubicación'] }}</strong>
+                    →
+                    {{ u['Sububicación'] }}
+                </a>
+            </div>
+
+            <div class="d-flex gap-2">
+
+                <a href="/ubicaciones/editar/{{ loop.index0 }}"
+                   class="btn btn-sm btn-warning">
+                    Editar
+                </a>
+
+                <a href="/ubicaciones/eliminar/{{ loop.index0 }}"
+                   class="btn btn-sm btn-danger"
+                   onclick="return confirm('¿Eliminar ubicación?')">
+                    Borrar
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

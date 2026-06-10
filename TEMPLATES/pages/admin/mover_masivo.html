@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Mover artículos{% endblock %}
+
+{% block content %}
+
+<div class="mb-4">
+
+    <h1>📦 Mover artículos</h1>
+
+    <div class="alert alert-warning">
+        Total seleccionados:
+        <strong>{{ seleccionados|length }}</strong>
+    </div>
+
+</div>
+
+<form method="post" action="/guardar_movimiento_masivo">
+
+    {% for numero in seleccionados %}
+
+    <input
+        type="hidden"
+        name="articulos"
+        value="{{ numero }}">
+
+    {% endfor %}
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Destino
+        </label>
+
+        <select name="destino" class="form-select">
+
+            {% for opcion in opciones %}
+
+            <option value="{{ opcion.valor }}">
+                {{ opcion.texto }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+    </div>
+
+    <button class="btn btn-primary">
+        Mover
+    </button>
+
+    <a href="/admin" class="btn btn-secondary">
+        Cancelar
+    </a>
+
+</form>
+
+{% endblock %}

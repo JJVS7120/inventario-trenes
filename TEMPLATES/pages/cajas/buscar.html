@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Buscar en cajas{% endblock %}
+
+{% block content %}
+
+<div class="mb-4">
+    <h1>📦 Buscar en cajas</h1>
+    <p class="text-muted">
+        Buscar artículos y localizar la caja donde están almacenados
+    </p>
+</div>
+
+<form method="get" class="mb-4">
+
+    <div class="input-group">
+
+        <input
+            type="text"
+            name="q"
+            value="{{ texto }}"
+            class="form-control"
+            placeholder="Marca, referencia o descripción">
+
+        <button
+            type="submit"
+            class="btn btn-primary">
+
+            Buscar
+
+        </button>
+
+    </div>
+
+</form>
+
+{% if texto %}
+
+<div class="mb-3">
+    <strong>{{ resultados|length }}</strong>
+    resultados encontrados
+</div>
+
+<div class="list-group">
+
+    {% for r in resultados %}
+
+    <a
+        href="/articulo/{{ r.numero }}"
+        class="list-group-item list-group-item-action">
+
+        <div>
+
+            <strong>
+                {{ r.marca }}
+            </strong>
+
+            -
+
+            {{ r.referencia }}
+
+        </div>
+
+        <small class="text-muted">
+            Caja: {{ r.caja }}
+        </small>
+
+    </a>
+
+    {% endfor %}
+
+</div>
+
+{% endif %}
+
+{% endblock %}

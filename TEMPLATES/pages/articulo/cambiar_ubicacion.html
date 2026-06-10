@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Cambiar ubicación{% endblock %}
+
+{% block content %}
+
+<h1>Cambiar ubicación</h1>
+
+<form method="post">
+
+    <div class="mb-3">
+
+        <label class="form-label">Ubicación</label>
+
+        <select class="form-select"
+                id="ubicacion_sub"
+                onchange="actualizar()">
+
+            {% for opcion in opciones %}
+
+            <option value="{{ opcion.valor }}">
+                {{ opcion.texto }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+    </div>
+
+    <input type="hidden" name="ubicacion" id="ubicacion">
+    <input type="hidden" name="sububicacion" id="sububicacion">
+
+    <button class="btn btn-primary">
+        Guardar
+    </button>
+
+</form>
+
+<script>
+
+function actualizar() {
+
+    let valor = document.getElementById("ubicacion_sub").value;
+    let partes = valor.split("|");
+
+    document.getElementById("ubicacion").value = partes[0];
+    document.getElementById("sububicacion").value = partes[1];
+}
+
+actualizar();
+
+</script>
+
+{% endblock %}

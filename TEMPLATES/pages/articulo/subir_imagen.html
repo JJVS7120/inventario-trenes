@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Subir imagen{% endblock %}
+
+{% block content %}
+
+<h1>Subir imagen</h1>
+
+<p class="text-muted">
+    {{ referencia }}
+</p>
+
+<form method="post" enctype="multipart/form-data">
+
+    <div class="mb-3">
+        <input class="form-control"
+               type="file"
+               name="imagen"
+               required>
+    </div>
+
+    <button class="btn btn-primary">
+        Subir imagen
+    </button>
+
+</form>
+
+<hr>
+
+<a class="btn btn-secondary"
+   href="/articulo/{{ numero }}">
+    Volver al artículo
+</a>
+
+{% endblock %}

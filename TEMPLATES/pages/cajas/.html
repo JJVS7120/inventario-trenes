@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Asignar caja{% endblock %}
+
+{% block content %}
+
+<h1>Asignar artículo {{ numero }} a caja</h1>
+
+<form method="post">
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Selecciona caja
+        </label>
+
+        <select
+            name="caja"
+            class="form-select"
+            required>
+
+            {% for caja in cajas %}
+
+            <option value="{{ caja.CajaID }}">
+                {{ caja.Nombre }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+    </div>
+
+    <button
+        type="submit"
+        class="btn btn-primary">
+
+        Guardar
+
+    </button>
+
+</form>
+
+<hr>
+
+<a
+    href="/articulo/{{ numero }}"
+    class="btn btn-secondary">
+
+    Volver al artículo
+
+</a>
+
+{% endblock %}
